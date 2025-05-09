@@ -2,89 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>🌾 Smart Crop Yield Predictor</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <script>
-        // Dark mode toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle("light");
-            localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-        }
-
-        window.onload = () => {
-            const saved = localStorage.getItem("theme");
-            if (saved === "light") document.body.classList.add("light");
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency SOS</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
-<body class="dark">
-    <div class="toggle-btn">
-        <button onclick="toggleDarkMode()">🌙 / ☀️</button>
-    </div>
-
+<body>
     <div class="container">
-        <h1 class="title">🌱 Smart Crop Yield Prediction</h1>
+        <h1 class="title">🚨 Emergency SOS System 🚨</h1>
 
-        <form method="POST" action="/predict" class="form-grid">
-            <div class="input-group">
-                <label>🌡 Temperature (°C)</label>
-                <input type="range" min="10" max="50" step="0.1" name="temperature" value="28" oninput="tempValue.value = this.value">
-                <output id="tempValue">28</output>
+        <!-- Registration & Login + SOS -->
+        <div class="form-container">
+            <!-- User Registration -->
+            <div class="section register-section">
+                <h2>User Registration</h2>
+                <input type="text" id="name" placeholder="Full Name">
+                <input type="email" id="email" placeholder="Email">
+                <input type="password" id="password" placeholder="Password">
+                
+                <!-- Dynamic Emergency Contacts -->
+                <div id="contacts-container">
+                    <label>Emergency Contacts:</label>
+                    <button id="add-contact" class="btn add-btn">+ Add Contact</button>
+                </div>
+
+                <button id="register" class="btn">Register</button>
             </div>
 
-            <div class="input-group">
-                <label>💧 Humidity (%)</label>
-                <input type="range" min="30" max="100" step="0.1" name="humidity" value="70" oninput="humValue.value = this.value">
-                <output id="humValue">70</output>
-            </div>
+            <!-- User Login + SOS -->
+            <div class="right-section">
+                <div class="section login-section">
+                    <h2>User Login</h2>
+                    <input type="email" id="login-email" placeholder="Email">
+                    <input type="password" id="login-password" placeholder="Password">
+                    <button id="login" class="btn">Login</button>
+                </div>
 
-            <div class="input-group">
-                <label>🌧 Rainfall (mm)</label>
-                <input type="range" min="50" max="300" step="1" name="rainfall" value="150" oninput="rainValue.value = this.value">
-                <output id="rainValue">150</output>
-            </div>
-
-            <div class="input-group">
-                <label>🧱 Select Soil Type</label>
-                <div class="soil-tiles">
-                    <label><input type="radio" name="soil" value="Loamy" required><img src="/static/soil_loamy.png"><span>Loamy</span></label>
-                    <label><input type="radio" name="soil" value="Clay"><img src="/static/soil_clay.jpeg"><span>Clay</span></label>
-                    <label><input type="radio" name="soil" value="Sandy"><img src="/static/soil_sandy.jpg"><span>Sandy</span></label>
-                    <label><input type="radio" name="soil" value="Silt"><img src="/static/soil_silt.jpg"><span>Silt</span></label>
+                <!-- SOS Button -->
+                <div class="section sos-section">
+                    <h2>Send SOS Alert</h2>
+                    <button id="sos-button" class="sos-btn">🚨 SEND SOS</button>
                 </div>
             </div>
+        </div>
 
-            <div class="input-group">
-                <label>📅 Select Year</label>
-                <select name="year" required>
-                    <option value="">Select Year</option>
-                    {% for y in range(2015, 2026) %}
-                    <option value="{{ y }}">{{ y }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label>🗓️ Select Month</label>
-                <select name="month" required>
-                    <option value="">Select Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn">🚀 Predict Yield</button>
-        </form>
+        <!-- Alert Messages -->
+        <div id="message" class="message"></div>
     </div>
 </body>
 </html>
