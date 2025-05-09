@@ -1,166 +1,134 @@
+/* General Styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    transition: background 0.4s, color 0.4s;
-}
-
-body.dark {
-    background: #121212;
-    color: #f1f1f1;
-}
-
-body.light {
-    background: #f5f5f5;
-    color: #222;
-}
-
-.container {
-    max-width: 720px;
-    margin: 50px auto;
-    padding: 30px;
-    background: var(--card-bg, #1e1e1e);
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0, 255, 170, 0.15);
-    transition: background 0.4s, color 0.4s;
-}
-
-.title {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff4e50, #fc913a);
+    color: white;
     text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #80ffdb;
-    text-shadow: 0 0 6px #00ffc8;
+    margin: 0;
+    padding: 20px;
 }
 
-.form-grid {
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Titles */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Flexbox for Register & Login */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Registration Section */
+.register-section {
+    width: 48%;
+}
+
+/* Right Side (Login + SOS) */
+.right-section {
+    width: 48%;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-group label {
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: #aad1c3;
-}
-
-input[type="range"] {
-    width: 100%;
-}
-
-output {
-    font-size: 16px;
-    color: inherit;
-    margin-top: 5px;
-    text-align: right;
-}
-
-input[type="number"], select {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: none;
-    background: #2a2a2a;
-    color: #f1f1f1;
-}
-
-button.btn {
-    padding: 14px;
-    background: linear-gradient(145deg, #00c9a7, #00b493);
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #00ffc8;
-    transition: all 0.3s ease;
-}
-
-button.btn:hover {
-    background: #00ffc8;
-    color: #121212;
-}
-
-.toggle-btn {
-    text-align: right;
-    padding: 10px 20px;
-}
-
-.toggle-btn button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #00ffc8;
-    text-shadow: 0 0 8px #00ffc8;
-    transition: 0.3s;
-}
-
-.toggle-btn button:hover {
-    text-shadow: 0 0 16px #00ffc8;
-}
-
-/* 🌱 Soil image selector */
-.soil-tiles {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.soil-tiles label {
-    flex: 1 1 40%;
-    text-align: center;
-    background: #2a2a2a;
+/* Sections */
+.section {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
+}
+
+/* Inputs */
+input {
+    width: 90%;
     padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.btn {
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: 0.3s;
+    margin: 10px 0;
 }
 
-.soil-tiles img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 6px;
-    border: 3px solid #00ffc8;
-    transition: transform 0.3s;
+.btn:hover {
+    background: #0056b3;
 }
 
-.soil-tiles input[type="radio"] {
+/* SOS Button */
+.sos-btn {
+    background: #ff0000;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+}
+
+.sos-btn:hover {
+    background: #cc0000;
+}
+
+/* Add Contact Button */
+.add-btn {
+    background: #28a745;
+}
+
+.add-btn:hover {
+    background: #218838;
+}
+
+/* Message Box */
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    background: #fff;
+    color: black;
+    border-radius: 5px;
     display: none;
 }
 
-.soil-tiles input[type="radio"]:checked + img {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #00ffc8;
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
-.soil-tiles label span {
-    display: block;
-    font-weight: bold;
-    color: #fff;
-}
-
-body.light .container {
-    background: white;
-    color: #222;
-    box-shadow: 0 0 10px #ccc;
-}
-
-body.light .soil-tiles label {
-    background: #e0e0e0;
-}
-
-body.light .soil-tiles label span {
-    color: #222;
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-container {
+        flex-direction: column;
+    }
+    
+    .register-section, .right-section {
+        width: 100%;
+    }
 }
